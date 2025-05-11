@@ -7,17 +7,6 @@
 
 
 
-//Modificar un producto: seleccionando uno de la lista, se pueden cambiar sus datos.
-//DARDO
-
-
-
-
-
-
-//Eliminar un producto: opción para borrar productos de la lista.
-//PABLO
-
 
 
 
