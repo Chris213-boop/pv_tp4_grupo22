@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import ProductForm from './ProductForm'
 import '../css/Estilos.css'
+import ProductDelete from './ProductDelete'
 
- 
  function App() {
   const [productos, setProductos] = useState([]);
 
@@ -14,6 +14,12 @@ import '../css/Estilos.css'
 
   const handleAgregarProducto = useCallback((nuevoProducto) => {
     setProductos(prevProductos => [...prevProductos, nuevoProducto]);
+  }, []);
+
+  const eliminarProducto = useCallback((descripcionABuscar) => {
+  setProductos(prevProductos =>
+    prevProductos.filter(producto => producto.descripcion.toLowerCase() !== descripcionABuscar.toLowerCase())
+  );
   }, []);
  
    return (
@@ -33,7 +39,9 @@ import '../css/Estilos.css'
                 ))}
               </ul>
             )}
+            <ProductDelete onDelete={eliminarProducto} />
           </aside>
+
       </main>
      </>
    )

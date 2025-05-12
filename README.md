@@ -14,7 +14,7 @@ If you are developing a production application, we recommend using TypeScript wi
  __________________________________________________________
 |               INTEGRANTES DEL GRUPO 22:                  |
 |__________________________________________________________|
-|    Apellido y Nombres     |  Nombres de ususario Github  |
+|    Apellido y Nombres     |  Nombres de usuario Github   |
 |__________________________________________________________|
 |Antenor, Maximiliano       | maxiant                      |
 |Cayo, Pedro Dardo Ramon    | PedroDardoRamonCayo          |
