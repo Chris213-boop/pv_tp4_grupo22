@@ -51,39 +51,51 @@ function ProductForm({ onAddProduct }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="product-form">
-      <h2>Agregar Nuevo Producto</h2>
-      <div>
-        <label htmlFor="descripcion">Descripción:</label>
-        <input
-          type="text"
-          id="descripcion"
-          value={descripcion}
-          onChange={(e) => setDescripcion(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="precioUnitario">Precio Unitario:</label>
-        <input
-          type="number"
-          id="precioUnitario"
-          value={precioUnitario}
-          onChange={(e) => setPrecioUnitario(e.target.value)}
-          step="0.01"
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="descuento">Descuento (%):</label>
-        <input type="number" id="descuento" value={descuento} onChange={(e) => setDescuento(e.target.value)} min="0" max="100" />
-      </div>
-      <div>
-        <label htmlFor="stock">Stock:</label>
-        <input type="number" id="stock" value={stock} onChange={(e) => setStock(e.target.value)} required />
-      </div>
-      <button type="submit">Agregar Producto</button>
-    </form>
+    <div className='container'>
+      <article className='article'>
+      <h2 className='titulo'>Agregar Nuevo Producto</h2>
+
+      <form onSubmit={handleSubmit} className="formulario">
+        <div className='columnas'>
+          
+          <div className='grupo'>
+            <label htmlFor="descripcion">Descripción:</label>
+            <input
+              type="text"
+              id="descripcion"
+              value={descripcion}
+              onChange={(e) => setDescripcion(e.target.value)}
+              required
+            />
+          </div>
+          <div className='grupo'>
+            <label htmlFor="precioUnitario">Precio Unitario:</label>
+            <input
+              type="number"
+              id="precioUnitario"
+              value={precioUnitario}
+              onChange={(e) => setPrecioUnitario(e.target.value)}
+              step="0.01"
+              required
+            />
+          </div>
+          <div className='grupo'>
+            <label htmlFor="descuento">Descuento (%):</label>
+            <input type="number" id="descuento" value={descuento} onChange={(e) => setDescuento(e.target.value)} min="0" max="100" />
+          </div>
+          <div className='grupo'>
+            <label htmlFor="stock">Stock:</label>
+            <input type="number" id="stock" value={stock} onChange={(e) => setStock(e.target.value)} required />
+          </div>
+        </div>
+
+        <footer className='footer'>
+          <button type="submit" className='boton'>Agregar Producto</button>
+        </footer>
+        </form>
+      </article>
+      
+    </div>
   );
 }
 
