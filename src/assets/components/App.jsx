@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import ProductForm from './ProductForm'
 import '../css/Estilos.css'
 import ProductDelete from './ProductDelete'
+import ProductEdit from './ProductEdit';
 
  function App() {
   const [productos, setProductos] = useState([]);
@@ -20,6 +21,14 @@ import ProductDelete from './ProductDelete'
   setProductos(prevProductos =>
     prevProductos.filter(producto => producto.descripcion.toLowerCase() !== descripcionABuscar.toLowerCase())
   );
+  }, []);
+
+   const actualizarProducto = useCallback((productoActualizado) => {
+  setProductos(prevProductos =>
+      prevProductos.map(producto =>
+        producto.id === productoActualizado.id ? { ...producto, ...productoActualizado } : producto
+      )
+    );
   }, []);
  
    return (
@@ -41,6 +50,10 @@ import ProductDelete from './ProductDelete'
             )}
             <ProductDelete onDelete={eliminarProducto} />
           </aside>
+
+ <article className='article'>
+          <ProductEdit products={productos} onUpdate={actualizarProducto} />
+        </article>
 
       </main>
      </>
