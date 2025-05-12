@@ -1,5 +1,6 @@
 //Eliminar un producto: opción para borrar productos de la lista.
 //PABLO
+
 import { useState } from 'react';
 
 function ProductDelete({ onDelete }) {

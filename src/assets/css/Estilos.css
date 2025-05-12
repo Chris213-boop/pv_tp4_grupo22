@@ -14,8 +14,7 @@ body{
     display: flex;
     height: 80vh;
     width: 90vw;
-    border-radius: 10px;
-    border: 5px solid black;
+    border: 5px;
     flex-direction: row-reverse;  /*para invertir el orden de los elementos de adentro*/
   }
   .aside{
