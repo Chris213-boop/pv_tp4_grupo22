@@ -1,18 +1,15 @@
 //para representar cada producto individual.
 
 
-let idCounter = 0;
-
-function Item (descripcion, precioUnitario, descuento, precioConDescuento, stock, fechaIncorporacion ){
+function Item ({descripcion, precioUnitario, descuento, stock }){
     //Nuevo Producto
     return {
-        id: ++idCounter,  //id unico
+        id: Date.now().toString(),
         descripcion,
         precioUnitario,
         descuento,
-        precioConDescuento,
+        precioConDescuento: precioUnitario * (1 - descuento / 100),
         stock,
-        fechaIncorporacion
     };
 }
 
