@@ -39,10 +39,11 @@ function ProductEdit({ products, onUpdate }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="formulario">
+    <div className="formulario">
+      <form onSubmit={handleSubmit} >
       <h2 className='titulo'>Editar Producto</h2>
       
-      <div className="grupo">
+      <div>
         <label htmlFor="producto">Selecciona un producto:</label>
         <select
           id="producto"
@@ -58,7 +59,7 @@ function ProductEdit({ products, onUpdate }) {
         </select>
       </div>
 
-      <div className="grupo">
+      <div>
         <label htmlFor="precioUnitario">Nuevo Precio Unitario:</label>
         <input
           type="number"
@@ -69,7 +70,7 @@ function ProductEdit({ products, onUpdate }) {
         />
       </div>
 
-      <div className="grupo">
+      <div>
         <label htmlFor="descuento">Nuevo Descuento (%):</label>
         <input
           type="number"
@@ -81,7 +82,7 @@ function ProductEdit({ products, onUpdate }) {
         />
       </div>
 
-      <div className="grupo">
+      <div>
         <label htmlFor="stock">Nuevo Stock:</label>
         <input
           type="number"
@@ -91,10 +92,11 @@ function ProductEdit({ products, onUpdate }) {
         />
       </div>
 
-      <div className="footer">
+      <div>
         <button type="submit" className="boton">Guardar Cambios</button>
       </div>
     </form>
+    </div>
   );
 }
 

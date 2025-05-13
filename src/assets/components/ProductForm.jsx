@@ -1,6 +1,7 @@
 //Agregar un producto: desde un formulario, se completan los datos y se guarda el producto.
 //LUCIA
 import React, { useState } from 'react';
+import Item from './ProductItem';
 
 function ProductForm({ onAddProduct }) {
   const [descripcion, setDescripcion] = useState('');
@@ -33,14 +34,13 @@ function ProductForm({ onAddProduct }) {
       return;
     }
 
-    const nuevoProducto = {
-      id: Date.now().toString(),
+    const datos = {
       descripcion,
       precioUnitario: precioNum,
       descuento: descuentoNum,
-      precioConDescuento: precioNum * (1 - descuentoNum / 100),
       stock: stockNum,
     };
+    const nuevoProducto = Item(datos); //aqui hacemos el llamada a Item pasandole los datos que tenemos en const datos
 
     onAddProduct(nuevoProducto);
 
@@ -51,14 +51,13 @@ function ProductForm({ onAddProduct }) {
   };
 
   return (
-    <div className='container'>
-      <article className='article'>
+    <div className="formulario">
+      
       <h2 className='titulo'>Agregar Nuevo Producto</h2>
 
-      <form onSubmit={handleSubmit} className="formulario">
-        <div className='columnas'>
-          
-          <div className='grupo'>
+      <form onSubmit={handleSubmit} >
+        <div>
+          <div>
             <label htmlFor="descripcion">Descripción:</label>
             <input
               type="text"
@@ -68,7 +67,7 @@ function ProductForm({ onAddProduct }) {
               required
             />
           </div>
-          <div className='grupo'>
+          <div>
             <label htmlFor="precioUnitario">Precio Unitario:</label>
             <input
               type="number"
@@ -79,21 +78,21 @@ function ProductForm({ onAddProduct }) {
               required
             />
           </div>
-          <div className='grupo'>
+          <div>
             <label htmlFor="descuento">Descuento (%):</label>
             <input type="number" id="descuento" value={descuento} onChange={(e) => setDescuento(e.target.value)} min="0" max="100" />
           </div>
-          <div className='grupo'>
+          <div>
             <label htmlFor="stock">Stock:</label>
             <input type="number" id="stock" value={stock} onChange={(e) => setStock(e.target.value)} required />
           </div>
         </div>
 
-        <footer className='footer'>
+        <div>
           <button type="submit" className='boton'>Agregar Producto</button>
-        </footer>
+        </div>
         </form>
-      </article>
+      
       
     </div>
   );

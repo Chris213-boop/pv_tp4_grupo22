@@ -12,17 +12,22 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="formulario">
-      <label htmlFor="busqueda">Buscar producto por ID o descripción:</label>
-      <input
-        id="busqueda"
-        type="text"
-        value={termino}
-        onChange={(e) => setTermino(e.target.value)}
-        placeholder="Ej: 101 o 'camisa'"
-      />
-      <button type="submit" className="boton">Buscar</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit} >
+        <h2> Buscar producto por ID o descripción: </h2>
+        <label htmlFor="busqueda">ID o descripción:</label>
+          <input
+            id="busqueda"
+            type="text"
+            value={termino}
+            onChange={(e) => setTermino(e.target.value)}
+            placeholder="Ej: 101 o 'camisa'"
+          />
+        <div>
+          <button type="submit" className="boton">Buscar</button>
+        </div>
+      </form>
+    </div>
   );
 }
 
