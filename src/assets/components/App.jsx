@@ -9,6 +9,7 @@ import ProductList from './ProductList';
  function App() {
   const [productos, setProductos] = useState([]);
   const [resultados, setResultados] = useState([]);
+  
 
 
   useEffect(() => {
@@ -40,6 +41,7 @@ import ProductList from './ProductList';
     const descMatch = producto.descripcion.toLowerCase().includes(termino.toLowerCase());
     return idMatch || descMatch;
   });
+ 
   setResultados(resultado);
 }, [productos]);
 
