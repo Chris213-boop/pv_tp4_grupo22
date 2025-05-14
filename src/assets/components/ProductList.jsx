@@ -11,6 +11,7 @@ function ProductList ({productos}) {
               <table>
                 <thead>
                   <tr>
+                    <th>ID</th> 
                     <th>Descripción</th>
                     <th>Precio Unitario</th>
                     <th>Descuento</th>
@@ -21,6 +22,7 @@ function ProductList ({productos}) {
                 <tbody>
                   {productos.map(producto => (
                     <tr key={producto.id}>
+                      <td>{producto.id}</td> 
                       <td>{producto.descripcion}</td>
                       <td>${producto.precioUnitario}</td>
                       <td>{producto.descuento}%</td>
