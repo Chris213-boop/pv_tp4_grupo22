@@ -11,21 +11,27 @@ function ProductList ({productos}) {
               <table>
                 <thead>
                   <tr>
-                    <th>Descripción</th>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Marca</th>
                     <th>Precio Unitario</th>
                     <th>Descuento</th>
                     <th>Precio Final</th>
                     <th>Stock</th>
+                    <th>Estado</th>
                   </tr>
                 </thead>
                 <tbody>
                   {productos.map(producto => (
                     <tr key={producto.id}>
-                      <td>{producto.descripcion}</td>
+                      <td>{producto.id}</td>
+                      <td>{producto.nombre}</td>
+                      <td>{producto.marca}</td>
                       <td>${producto.precioUnitario}</td>
                       <td>{producto.descuento}%</td>
                       <td>${producto.precioConDescuento.toFixed(2)}</td>
                       <td>{producto.stock}</td>
+                      <td>{producto.estado}</td>
                     </tr>
                   ))}
                 </tbody>

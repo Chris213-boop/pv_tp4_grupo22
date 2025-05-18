@@ -14,8 +14,8 @@ function SearchBar({ onSearch }) {
   return (
     <div>
       <form onSubmit={handleSubmit} >
-        <h2> Buscar producto por ID o descripción: </h2>
-        <label htmlFor="busqueda">ID o descripción:</label>
+        <h2> Buscar producto por ID o Nombre: </h2>
+        <label htmlFor="busqueda">ID o Nombre:</label>
           <input
             id="busqueda"
             type="text"

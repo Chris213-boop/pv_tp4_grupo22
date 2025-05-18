@@ -4,13 +4,13 @@
 import { useState } from 'react';
 
 function ProductDelete({ onDelete }) {
-  const [descripcion, setDescripcion] = useState('');
+  const [nombre, setNombre] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (descripcion.trim() === '') return;
-    onDelete(descripcion); // Llama a App.jsx
-    setDescripcion(''); // Limpia el input
+    if (nombre.trim() === '') return;
+    onDelete(nombre); // Llama a App.jsx
+    setNombre(''); // Limpia el input
   };
 
   return (
@@ -20,9 +20,9 @@ function ProductDelete({ onDelete }) {
           <h2 className='titulo'>Eliminar Producto por Descripción</h2>
           <input
             type="text"
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
-            placeholder="Descripción del producto"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            placeholder="Nombre del producto"
           />
         </div>
         <div>

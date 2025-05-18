@@ -4,16 +4,18 @@ import React, { useState } from 'react';
 import Item from './ProductItem';
 
 function ProductForm({ onAddProduct }) {
-  const [descripcion, setDescripcion] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [marca, setMarca] = useState('');
   const [precioUnitario, setPrecioUnitario] = useState('');
   const [descuento, setDescuento] = useState('');
   const [stock, setStock] = useState('');
+  const [estado, setEstado] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!descripcion || !precioUnitario || !stock) {
-      alert('Por favor, completa la descripción, precio unitario y stock.');
+    if (!nombre || !precioUnitario || !stock) {
+      alert('Por favor, completa el nombre, precio unitario y stock.');
       return;
     }
 
@@ -35,19 +37,23 @@ function ProductForm({ onAddProduct }) {
     }
 
     const datos = {
-      descripcion,
+      nombre,
+      marca,
       precioUnitario: precioNum,
       descuento: descuentoNum,
       stock: stockNum,
+      estado,
     };
     const nuevoProducto = Item(datos); //aqui hacemos el llamada a Item pasandole los datos que tenemos en const datos
 
     onAddProduct(nuevoProducto);
 
-    setDescripcion('');
+    setNombre('');
+    setMarca('');
     setPrecioUnitario('');
     setDescuento('');
     setStock('');
+    setEstado('');
   };
 
   return (
@@ -58,12 +64,22 @@ function ProductForm({ onAddProduct }) {
       <form onSubmit={handleSubmit} >
         <div>
           <div>
-            <label htmlFor="descripcion">Descripción:</label>
+            <label htmlFor="nombre">Nombre:</label>
             <input
               type="text"
-              id="descripcion"
-              value={descripcion}
-              onChange={(e) => setDescripcion(e.target.value)}
+              id="nombre"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="marca">Marca:</label>
+            <input
+              type="text"
+              id="marca"
+              value={marca}
+              onChange={(e) => setMarca(e.target.value)}
               required
             />
           </div>
