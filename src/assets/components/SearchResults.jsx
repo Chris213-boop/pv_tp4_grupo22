@@ -11,12 +11,15 @@ function SearchResults ({buscarProducto, resultados}) {
                 <ul>
                     {resultados.map(producto => (
                         <li key={producto.id}>
-                        {producto.nombre}- Marca: {producto.marca}- Precio: ${producto.precioUnitario} - Descuento: {producto.descuento}% - Precio Final: ${producto.precioConDescuento.toFixed(2)} - Stock: {producto.stock}- Estado: {producto.estado}
+                        ID: {producto.id} - {producto.nombre}- Marca: {producto.marca}- Precio: ${producto.precioUnitario} - Descuento: {producto.descuento}% - Precio Final: ${producto.precioConDescuento.toFixed(2)} - Stock: {producto.stock}- Estado: {producto.estado}
                         </li>
                     ))}
                 </ul>
             </section>
+            
+            
             )}
+            
         </div>
     );
 }
