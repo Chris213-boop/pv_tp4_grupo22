@@ -22,9 +22,9 @@ import ProductList from './ProductList';
     setProductos(prevProductos => [...prevProductos, nuevoProducto]);
   }, []);
 
-  const eliminarProducto = useCallback((descripcionABuscar) => {
+  const eliminarProducto = useCallback((nombreABuscar) => {
   setProductos(prevProductos =>
-    prevProductos.filter(producto => producto.descripcion.toLowerCase() !== descripcionABuscar.toLowerCase())
+    prevProductos.filter(producto => producto.nombre.toLowerCase() !== nombreABuscar.toLowerCase())
   );
   }, []);
 
@@ -38,8 +38,8 @@ import ProductList from './ProductList';
   const buscarProducto = useCallback((termino) => {
   const resultado = productos.filter(producto => {
     const idMatch = producto.id.toString() === termino;
-    const descMatch = producto.descripcion.toLowerCase().includes(termino.toLowerCase());
-    return idMatch || descMatch;
+    const nombreMatch = producto.nombre.toLowerCase().includes(termino.toLowerCase());
+    return idMatch || nombreMatch;
   });
  
   setResultados(resultado);
@@ -50,7 +50,6 @@ import ProductList from './ProductList';
      <> 
       <main className='contenedor-formularios'>
           <ProductForm onAddProduct={handleAgregarProducto} />
-          
           <SearchResults buscarProducto={buscarProducto} resultados={resultados} />
           <ProductDelete onDelete={eliminarProducto} />
           <ProductEdit products={productos} onUpdate={actualizarProducto} />

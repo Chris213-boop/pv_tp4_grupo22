@@ -1,15 +1,17 @@
 //para representar cada producto individual.
 
 
-function Item ({descripcion, precioUnitario, descuento, stock }){
+function Item ({nombre, marca, precioUnitario, descuento, stock, estado }){
     //Nuevo Producto
     return {
         id: Date.now().toString(),
-        descripcion,
+        nombre,
+        marca,
         precioUnitario,
         descuento,
         precioConDescuento: precioUnitario * (1 - descuento / 100),
         stock,
+        estado,
     };
 }
 

@@ -53,7 +53,7 @@ function ProductEdit({ products, onUpdate }) {
           <option value="">-- Elige un producto --</option>
           {products.map((p) => (
             <option key={p.id} value={p.id}>
-              {p.descripcion}
+              {p.nombre}
             </option>
           ))}
         </select>
