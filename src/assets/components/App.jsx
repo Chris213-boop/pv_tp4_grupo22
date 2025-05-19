@@ -3,9 +3,14 @@ import ProductForm from './ProductForm'
 import '../css/Estilos.css'
 import ProductDelete from './ProductDelete'
 import ProductEdit from './ProductEdit';
+import SearchResults from './SearchResults';
+import ProductList from './ProductList';
 
  function App() {
   const [productos, setProductos] = useState([]);
+  const [resultados, setResultados] = useState([]);
+  
+
 
   useEffect(() => {
     if (productos.length > 0) {
@@ -17,11 +22,19 @@ import ProductEdit from './ProductEdit';
     setProductos(prevProductos => [...prevProductos, nuevoProducto]);
   }, []);
 
-  const eliminarProducto = useCallback((descripcionABuscar) => {
+  const deshabilitarProducto = useCallback((idABuscar) => {
+  let encontrado = false;
   setProductos(prevProductos =>
-    prevProductos.filter(producto => producto.descripcion.toLowerCase() !== descripcionABuscar.toLowerCase())
+    prevProductos.map(producto => {
+      if (producto.id.toString() === idABuscar) {
+        encontrado = true;
+        return { ...producto, estado: false };
+      }
+      return producto;
+    })
   );
-  }, []);
+  return encontrado;
+}, []);
 
    const actualizarProducto = useCallback((productoActualizado) => {
   setProductos(prevProductos =>
@@ -30,31 +43,25 @@ import ProductEdit from './ProductEdit';
       )
     );
   }, []);
+  const buscarProducto = useCallback((termino) => {
+  const resultado = productos.filter(producto => {
+    const idMatch = producto.id.toString() === termino;
+    const nombreMatch = producto.nombre.toLowerCase().includes(termino.toLowerCase());
+    return idMatch || nombreMatch;
+  });
+ 
+  setResultados(resultado);
+}, [productos]);
+
  
    return (
      <> 
-      <main className='container'>
+      <main className='contenedor-formularios'>
           <ProductForm onAddProduct={handleAgregarProducto} />
-          <aside className='aside'>
-            <h2 className='titulo'>Lista de Productos Agregados</h2>
-            {productos.length === 0 ? (
-              <p>Aún no hay productos. ¡Agrega uno!</p>
-            ) : (
-              <ul>
-                {productos.map(producto => (
-                  <li key={producto.id}>
-                    {producto.descripcion} - Precio: ${producto.precioUnitario} - Descuento: {producto.descuento}% - Precio Final: ${producto.precioConDescuento.toFixed(2)} - Stock: {producto.stock}
-                  </li>
-                ))}
-              </ul>
-            )}
-            <ProductDelete onDelete={eliminarProducto} />
-          </aside>
-
- <article className='article'>
+          <SearchResults buscarProducto={buscarProducto} resultados={resultados} />
+          <ProductDelete onDelete={deshabilitarProducto} />
           <ProductEdit products={productos} onUpdate={actualizarProducto} />
-        </article>
-
+          <ProductList productos={productos} />
       </main>
      </>
    )

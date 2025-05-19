@@ -1,7 +1,5 @@
 //Buscar un producto: mediante una barra de búsqueda (por descripción o ID).
 //MAXIMILIANO
-<<<<<<< Updated upstream
-=======
 import React, { useState, useCallback } from 'react';
 
 const SearchBar = React.memo(function SearchBar({ onSearch }) {
@@ -36,8 +34,10 @@ const SearchBar = React.memo(function SearchBar({ onSearch }) {
     </div>
   );
 });
+}
 
 export default SearchBar;
+
 
 
 
