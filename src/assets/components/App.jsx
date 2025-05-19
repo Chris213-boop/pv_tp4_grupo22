@@ -22,11 +22,19 @@ import ProductList from './ProductList';
     setProductos(prevProductos => [...prevProductos, nuevoProducto]);
   }, []);
 
-  const eliminarProducto = useCallback((nombreABuscar) => {
+  const deshabilitarProducto = useCallback((idABuscar) => {
+  let encontrado = false;
   setProductos(prevProductos =>
-    prevProductos.filter(producto => producto.nombre.toLowerCase() !== nombreABuscar.toLowerCase())
+    prevProductos.map(producto => {
+      if (producto.id.toString() === idABuscar) {
+        encontrado = true;
+        return { ...producto, estado: false };
+      }
+      return producto;
+    })
   );
-  }, []);
+  return encontrado;
+}, []);
 
    const actualizarProducto = useCallback((productoActualizado) => {
   setProductos(prevProductos =>
@@ -51,7 +59,7 @@ import ProductList from './ProductList';
       <main className='contenedor-formularios'>
           <ProductForm onAddProduct={handleAgregarProducto} />
           <SearchResults buscarProducto={buscarProducto} resultados={resultados} />
-          <ProductDelete onDelete={eliminarProducto} />
+          <ProductDelete onDelete={deshabilitarProducto} />
           <ProductEdit products={productos} onUpdate={actualizarProducto} />
           <ProductList productos={productos} />
       </main>

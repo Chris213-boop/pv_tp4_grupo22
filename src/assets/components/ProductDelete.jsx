@@ -4,25 +4,33 @@
 import { useState } from 'react';
 
 function ProductDelete({ onDelete }) {
-  const [nombre, setNombre] = useState('');
+  const [id, setId] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (nombre.trim() === '') return;
-    onDelete(nombre); // Llama a App.jsx
-    setNombre(''); // Limpia el input
+    if (id.trim() === '') return;
+
+    const fueDesactivado = onDelete(id);
+
+    if (fueDesactivado) {
+      alert(`Producto con ID : ${id} ha sido Eliminado.`);
+    } else {
+      alert(`No se encontró un producto con ID :${id}.`);
+    }
+
+    setId('');
   };
 
   return (
     <div className="formulario">
       <form onSubmit={handleSubmit}>
         <div>
-          <h2 className='titulo'>Eliminar Producto por Descripción</h2>
+          <h2 className='titulo'>Eliminar Producto por ID</h2>
           <input
             type="text"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            placeholder="Nombre del producto"
+            value={id}
+            onChange={(e) => setId(e.target.value)}
+            placeholder="ID del producto"
           />
         </div>
         <div>

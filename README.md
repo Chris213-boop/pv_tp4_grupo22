@@ -23,7 +23,8 @@ If you are developing a production application, we recommend using TypeScript wi
 |Vargas Soraide, Ana Lucia  | luciasoraide                 |
 |___________________________|______________________________|
 
-DESCRIPCION DEL PROYECTO:
+DESCRIPCION DEL PROYECTO: Este proyecto consiste en desarrollar una aplicacion web usando React y Vite,que permita gestionar una lista de productos. 
+     La app incluye funcionalidades para agregar, buscar, editar y eliminar productos, cada uno con propiedades como ID, descripcion, precio, descuento, precio con descuento y stock.Se usan algunos Hooks para el manejo eficiente de los estados, efectos secundarios, funciones optimizadas y busquedas. Además, el proyecto aplica eventos del DOM y estilos básicos para asegurar una experiencia clara y funcional.
 
 
 
