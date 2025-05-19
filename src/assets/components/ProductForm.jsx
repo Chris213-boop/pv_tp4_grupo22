@@ -9,7 +9,7 @@ function ProductForm({ onAddProduct }) {
   const [precioUnitario, setPrecioUnitario] = useState('');
   const [descuento, setDescuento] = useState('');
   const [stock, setStock] = useState('');
-  const [estado, setEstado] = useState('');
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +42,7 @@ function ProductForm({ onAddProduct }) {
       precioUnitario: precioNum,
       descuento: descuentoNum,
       stock: stockNum,
-      estado,
+      estado: true,
     };
     const nuevoProducto = Item(datos); //aqui hacemos el llamada a Item pasandole los datos que tenemos en const datos
 
@@ -53,7 +53,7 @@ function ProductForm({ onAddProduct }) {
     setPrecioUnitario('');
     setDescuento('');
     setStock('');
-    setEstado('');
+    
   };
 
   return (
