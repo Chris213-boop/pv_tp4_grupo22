@@ -2,7 +2,7 @@
 //MAXIMILIANO
 import React, { useState, useCallback } from 'react';
 
-const SearchBar = React.memo(function SearchBar({ onSearch }) {
+const SearchBar = React.memo(function SearchBar({ onSearch, noEncontrado, onInputChange  }) {
   const [termino, setTermino] = useState('');
 
   const handleSubmit = useCallback((e) => {
@@ -12,8 +12,11 @@ const SearchBar = React.memo(function SearchBar({ onSearch }) {
   }, [termino, onSearch]);
 
   const handleChange = useCallback((e) => {
+     const nuevoValor = e.target.value;
+    setTermino(nuevoValor);
+    onInputChange();
     setTermino(e.target.value);
-  }, []);
+  }, [onInputChange]);
 
   return (
     <div>
@@ -30,7 +33,14 @@ const SearchBar = React.memo(function SearchBar({ onSearch }) {
         <div>
           <button type="submit" className="boton">Buscar</button>
         </div>
+
       </form>
+
+      {noEncontrado && (
+        <p >
+          No se encontró el producto buscado.
+        </p>
+      )}
     </div>
   );
 });
