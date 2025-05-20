@@ -58,11 +58,9 @@ function ProductForm({ onAddProduct }) {
 
   return (
     <div className="formulario">
-      
       <h2 className='titulo'>Agregar Nuevo Producto</h2>
-
       <form onSubmit={handleSubmit} >
-        <div>
+        <div className='contenido-formulario'>
           <div>
             <label htmlFor="nombre">Nombre:</label>
             <input

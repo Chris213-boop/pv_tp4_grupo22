@@ -47,8 +47,9 @@ import ProductList from './ProductList';
   const resultado = productos.filter(producto => {
     const idMatch = producto.id.toString() === termino;
     const nombreMatch = producto.nombre.toLowerCase().includes(termino.toLowerCase());
-    const marcaMatch = producto.marca && producto.marca.toLowerCase().includes(termino.toLowerCase()); // Asumiendo que tus productos tienen una propiedad 'marca'
-    return idMatch || nombreMatch || marcaMatch;
+    const marcaMatch = producto.marca && producto.marca.toLowerCase().includes(termino.toLowerCase());
+
+    return (idMatch || nombreMatch || marcaMatch) && producto.estado === true;
   });
   
   setNoEncontrado(resultado.length === 0);
