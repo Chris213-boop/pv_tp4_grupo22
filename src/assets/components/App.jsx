@@ -22,18 +22,20 @@ import ProductList from './ProductList';
     setProductos(prevProductos => [...prevProductos, nuevoProducto]);
   }, []);
 
-  const deshabilitarProducto = useCallback((idABuscar) => {
-  let encontrado = false;
+  const deshabilitarProducto = useCallback((termino) => {
+  let fueDesactivado = false;
   setProductos(prevProductos =>
     prevProductos.map(producto => {
-      if (producto.id.toString() === idABuscar) {
-        encontrado = true;
+      const idMatch = producto.id.toString() === termino;
+      const nombreMatch = producto.nombre.toLowerCase() === termino.toLowerCase();
+      if ((idMatch || nombreMatch) && producto.estado !== false) {
+        fueDesactivado = true;
         return { ...producto, estado: false };
       }
       return producto;
     })
   );
-  return encontrado;
+  return fueDesactivado;
 }, []);
 
    const actualizarProducto = useCallback((productoActualizado) => {

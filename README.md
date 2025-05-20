@@ -1,15 +1,4 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Integrantes del Grupo y Descripción del proyecto:
 
  __________________________________________________________
 |               INTEGRANTES DEL GRUPO 22:                  |
@@ -23,8 +12,73 @@ If you are developing a production application, we recommend using TypeScript wi
 |Vargas Soraide, Ana Lucia  | luciasoraide                 |
 |___________________________|______________________________|
 
-DESCRIPCION DEL PROYECTO: Este proyecto consiste en desarrollar una aplicacion web usando React y Vite,que permita gestionar una lista de productos. 
-     La app incluye funcionalidades para agregar, buscar, editar y eliminar productos, cada uno con propiedades como ID, descripcion, precio, descuento, precio con descuento y stock.Se usan algunos Hooks para el manejo eficiente de los estados, efectos secundarios, funciones optimizadas y busquedas. Además, el proyecto aplica eventos del DOM y estilos básicos para asegurar una experiencia clara y funcional.
+
+# 🛒 Aplicación para Gestión de Productos (React)
+
+Aplicación web construida con React para la gestión de productos. Permite agregar, buscar, editar, eliminar y visualizar productos activos e inactivos con formularios simples e interfaz intuitiva.
 
 
+## 🚀 Funcionalidades
+
+- Agregar productos con validaciones.
+- Buscar productos por ID, nombre o marca.
+- Editar precio, descuento y stock de productos existentes.
+- Eliminar productos por ID o nombre (marcados como inactivos, no se borran).
+- Visualizar listas separadas de productos activos e inactivos.
+- Cálculo automático de precio con descuento.
+
+
+## 🧱 Estructura del Proyecto
+
+src/
+├── assets/
+|     ├── components/
+|     |    ├── App.jsx
+|     |    ├── ProductForm.jsx
+|     |    ├── ProductDelete.jsx
+|     |    ├── ProductEdit.jsx
+|     |    ├── ProductList.jsx
+|     |    ├── SearchResults.jsx
+|     |    ├── SearchBar.jsx
+|     |    └── ProductItem.jsx
+|     └── css/
+|          └── Estilos.css
+└── main.jsx
+
+## 📄 Componentes y Responsabilidades
+
+| Componente         | Rol Principal                                                                                                   |
+|--------------------|-----------------------------------------------------------------------------------------------------------------|
+| App.jsx            | Componente principal. Administra el estado global de productos y conecta toda la lógica con los subcomponentes. |
+| ProductForm.jsx    | Formulario para agregar productos nuevos. Usa validación y crea objetos con ProductItem.jsx.                    |
+| ProductItem.jsx    | Función auxiliar para crear un objeto producto con id, precioConDescuento, y estado.                            |
+| ProductDelete.jsx  | Formulario para deshabilitar (eliminar lógicamente) productos por ID o nombre.                                  |
+| ProductEdit.jsx    | Formulario para editar precio, descuento y stock de productos activos.                                          |
+| ProductList.jsx    | Muestra dos tablas: una con productos activos y otra con inactivos.                                             |
+| SearchResults.jsx  | Muestra resultados de búsqueda y contiene a SearchBar. Usa useMemo para optimización.                           |
+| SearchBar.jsx      | Barra de búsqueda interactiva. Usa useCallback para evitar renders innecesarios.                                |
+| Estilos.css        | Archivo de estilos generales.                                                                                   |
+
+## 🧠 Tecnologías y Hooks Usados
+
+### ⚙ React
+- useState: manejo de formularios y estado general.
+- useEffect: logging de cambios en la lista de productos.
+- useCallback: evita recrear funciones en App y SearchBar.
+- useMemo: optimiza renderizado de búsqueda.
+
+
+## 📌 Estados y Datos
+
+### Objeto Producto:
+{
+  id: number,               // Generado automáticamente
+  nombre: string,
+  marca: string,
+  precio: number,
+  descuento: number,        // Porcentaje
+  precioConDescuento: number, // Calculado automáticamente
+  stock: number,
+  estado: boolean           // true = activo, false = inactivo
+}
 

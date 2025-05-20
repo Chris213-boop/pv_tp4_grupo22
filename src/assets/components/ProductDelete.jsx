@@ -23,15 +23,15 @@ function ProductDelete({ onDelete }) {
 
   return (
     <div className="formulario">
-      <h2 className='titulo'>Eliminar Producto por ID</h2>
+      <h2 className='titulo'>Eliminar Producto por ID o Nombre</h2>
       <form onSubmit={handleSubmit}>
         <div className='contenido-formulario'>
-          <label htmlFor="busqueda">ID, Nombre o Marca:</label>
+          <label>ID o Nombre:</label>
           <input
             type="text"
             value={id}
             onChange={(e) => setId(e.target.value)}
-            placeholder="ID del producto"
+            placeholder="ID o nombre del producto"
           />
         </div>
         <div>

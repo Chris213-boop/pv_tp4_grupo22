@@ -12,9 +12,14 @@ function SearchResults({ buscarProducto, resultados, noEncontrado, resetNoEncont
         <ul>
           {resultados.map((producto) => (
             <li key={producto.id}>
-              ID: {producto.id} - {producto.nombre} - Marca: {producto.marca} - Precio: ${producto.precioUnitario} - 
-              Descuento: {producto.descuento}% - Precio Final: ${producto.precioConDescuento.toFixed(2)} - 
-              Stock: {producto.stock} - Estado: {producto.estado ? "Activo" : "Inactivo"}
+              ID : {producto.id}<br />
+              Nombre : {producto.nombre}<br />
+              Marca : {producto.marca}<br />
+              Precio : ${producto.precioUnitario}<br />
+              Descuento : {producto.descuento}%<br />
+              Precio Final : ${producto.precioConDescuento.toFixed(2)}<br />
+              Stock : {producto.stock}<br />
+              Estado : {producto.estado ? "Activo" : "Inactivo"}
             </li>
           ))}
         </ul>
