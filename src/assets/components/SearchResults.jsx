@@ -2,7 +2,7 @@
 import React, { useMemo } from "react";
 import SearchBar from "./SearchBar";
 
-function SearchResults({ buscarProducto, resultados }) {
+function SearchResults({ buscarProducto, resultados, noEncontrado, resetNoEncontrado }) {
   const renderedResults = useMemo(() => {
     if (resultados.length === 0) return null;
 
@@ -24,7 +24,7 @@ function SearchResults({ buscarProducto, resultados }) {
 
   return (
     <div className="formulario">
-      <SearchBar onSearch={buscarProducto} />
+      <SearchBar onSearch={buscarProducto} noEncontrado={noEncontrado} onInputChange={resetNoEncontrado} />
       {renderedResults}
     </div>
   );

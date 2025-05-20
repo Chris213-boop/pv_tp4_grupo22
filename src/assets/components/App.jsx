@@ -9,7 +9,7 @@ import ProductList from './ProductList';
  function App() {
   const [productos, setProductos] = useState([]);
   const [resultados, setResultados] = useState([]);
-  
+  const [noEncontrado, setNoEncontrado] = useState(false);
 
 
   useEffect(() => {
@@ -50,16 +50,18 @@ import ProductList from './ProductList';
     const marcaMatch = producto.marca && producto.marca.toLowerCase().includes(termino.toLowerCase()); // Asumiendo que tus productos tienen una propiedad 'marca'
     return idMatch || nombreMatch || marcaMatch;
   });
- 
+  
+  setNoEncontrado(resultado.length === 0);
   setResultados(resultado);
 }, [productos]);
+const resetNoEncontrado = () => setNoEncontrado(false);
 
  
    return (
      <> 
       <main className='contenedor-formularios'>
           <ProductForm onAddProduct={handleAgregarProducto} />
-          <SearchResults buscarProducto={buscarProducto} resultados={resultados} />
+          <SearchResults buscarProducto={buscarProducto} resultados={resultados}noEncontrado={noEncontrado}resetNoEncontrado={resetNoEncontrado} />
           <ProductDelete onDelete={deshabilitarProducto} />
           <ProductEdit products={productos} onUpdate={actualizarProducto} />
           <ProductList productos={productos} />
