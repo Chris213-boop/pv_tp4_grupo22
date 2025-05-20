@@ -20,9 +20,10 @@ const SearchBar = React.memo(function SearchBar({ onSearch, noEncontrado, onInpu
 
   return (
     <div>
+      <h2>Buscar producto por ID, Nombre o Marca:</h2>
       <form onSubmit={handleSubmit}>
-        <h2>Buscar producto por ID, Nombre o Marca:</h2>
-        <label htmlFor="busqueda">ID, Nombre o Marca:</label>
+        <div className='contenido-formulario'>
+          <label htmlFor="busqueda">ID, Nombre o Marca:</label>
         <input
           id="busqueda"
           type="text"
@@ -30,6 +31,8 @@ const SearchBar = React.memo(function SearchBar({ onSearch, noEncontrado, onInpu
           onChange={handleChange}
           placeholder="Ej: 101, 'camisa' o 'MarcaX'"
         />
+        </div>
+        
         <div>
           <button type="submit" className="boton">Buscar</button>
         </div>

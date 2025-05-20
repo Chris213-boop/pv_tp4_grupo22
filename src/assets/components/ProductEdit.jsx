@@ -40,10 +40,10 @@ function ProductEdit({ products, onUpdate }) {
 
   return (
     <div className="formulario">
-      <form onSubmit={handleSubmit} >
       <h2 className='titulo'>Editar Producto</h2>
-      
-      <div>
+      <form onSubmit={handleSubmit} >
+        <div  className='contenido-formulario'>
+          <div>
         <label htmlFor="producto">Selecciona un producto:</label>
         <select
           id="producto"
@@ -91,7 +91,7 @@ function ProductEdit({ products, onUpdate }) {
           onChange={(e) => setStock(e.target.value)}
         />
       </div>
-
+        </div>
       <div>
         <button type="submit" className="boton">Guardar Cambios</button>
       </div>
